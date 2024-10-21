@@ -33,6 +33,3 @@ def generate_response(prompt):
         )
         response = tokenizer.decode(outputs[0], skip_special_tokens=True)
         return response.strip()
-
-if __name__ == "__main__":
-    main()
