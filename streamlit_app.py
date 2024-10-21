@@ -13,11 +13,11 @@ def main():
     st.title("Hugging Face GPT-2 Text Generator")
 
     # Create a text input field for the user's prompt
-    user_prompt = st.text_input("Enter your prompt:")
+    user_prompt = st.text_input("What would you like to learn about today:")
 
     # Generate a response based on the user's prompt
     if st.button("Enter"):
-            response = generate_response(user_prompt, max_length, temperature, top_k, top_p)
+            response = generate_response(user_prompt)
             st.text_area("Response:", value=response, height=200)
 
 def generate_response(prompt, max_length, temperature, top_k, top_p):
