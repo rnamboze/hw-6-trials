@@ -26,13 +26,22 @@ num_tokens = st.number_input("Number of Tokens:", min_value=10, max_value=300, v
 
 input_ids = tokenizer(prompt, return_tensors="pt").input_ids
 
-gen_tokens = model.generate(
+creative_response = model.generate(
         input_ids,
         do_sample=True,
         temperature=0.9,
         max_length=num_tokens,
 )    
-gen_text = tokenizer.batch_decode(gen_tokens)[0]
- 
+creative_text = tokenizer.batch_decode(creative_response)[0]
+
+predictable_response = model.generate(
+        input_ids,
+        do_sample=True,
+        temperature=0.9,
+        max_length=num_tokens,
+)    
+predictable_text = tokenizer.batch_decode(predictable_response)[0]
+
 # Display the result when user hits 'Enter'
-st.write(gen_text)
+st.write(creative_text)
+st.write(predictable_text)
