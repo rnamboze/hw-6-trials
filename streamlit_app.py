@@ -25,7 +25,7 @@ tokenizer, model = load_model()
 # Function to generate a response from GPT-2
 def generate_response(prompt):
     inputs = tokenizer(prompt, return_tensors="pt")
-    outputs = model.generate(inputs['input_ids'], max_length=100, do_sample=True, top_k=50, top_p=0.95, temperature=1.2)
+    outputs = model.generate(inputs['input_ids'], max_length=100, do_sample=True, top_k=50, top_p=0.95, temperature=0.9)
     response = tokenizer.decode(outputs[0], skip_special_tokens=True)
     return response
 
