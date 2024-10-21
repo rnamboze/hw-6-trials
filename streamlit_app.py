@@ -11,9 +11,6 @@ os.environ["OPENAI_API_KEY"] = my_secret_key
 tokenizer = AutoTokenizer.from_pretrained("gpt2")
 model = AutoModelForCausalLM.from_pretrained("gpt2")
 
-# Title of the app
-st.title("My Super Awesome GPT-2 Deployment!")
-
 # Field for the user's prompt
 prompt = st.text_input("What would you like to learn about today?")
 
@@ -25,10 +22,11 @@ def generate_response(prompt):
     return response
 
 # Generate and display the response
-if st.button("Generate"):
-    if prompt.strip():
-        response = generate_response(prompt)
-        st.text_area("Response:", value=response, height=200)
-    else:
-        st.warning("Please enter a prompt!")
+if st.button("Enter"):
+    prompt.strip():
+    response = generate_response(prompt)
+    st.text_area("Response:", value=response, height=200)
+    
 
+# Title of the app
+st.title("My Super Awesome GPT-2 Deployment!")
