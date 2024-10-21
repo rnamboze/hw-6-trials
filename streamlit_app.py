@@ -21,9 +21,6 @@ def generate_response(prompt):
         outputs = model.generate(**inputs, max_length=1024, num_beams=4)
         response = tokenizer.decode(outputs[0], skip_special_tokens=True)
         return response.strip()
-    except Exception as e:
-        st.error(f"An error occurred: {e}")
-        return ""
 
 if __name__ == "__main__":
     main()
