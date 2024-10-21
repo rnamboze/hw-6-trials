@@ -16,11 +16,10 @@ st.title("My Super Awesome GPT-2 Deployment!")
 
 # Instructions
 st.subheader("Enter _what NOUN is on your mind_ followed by an auxilliary verb such as _is, was, has,_ etc. and see what happens! :sunglasses:", divider=True)
-st.caption("The example _Swimming is_ has been provided below")
-
+st.caption("The example _Coffee is_ has been provided below")
 
 # Field for the user's prompt
-prompt = st.text_input("What is on your mind?", "Swimming is")
+prompt = st.text_input("What is on your mind?", "Coffee is")
 
 # Function to generate text
 def generate_text(prompt, temperature=0.9, max_length=100):
