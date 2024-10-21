@@ -11,22 +11,28 @@ os.environ["OPENAI_API_KEY"] = my_secret_key
 tokenizer = AutoTokenizer.from_pretrained("gpt2")
 model = AutoModelForCausalLM.from_pretrained("gpt2")
 
+# Title of the app
+st.title("My Super Awesome GPT-2 Deployment!")
+
 # Field for the user's prompt
 prompt = st.text_input("What would you like to learn about today?")
 
-# Function to generate a response from GPT-2
-def generate_response(prompt):
-    inputs = tokenizer(prompt, return_tensors="pt")
-    outputs = model.generate(inputs['input_ids'], max_length=100, do_sample=True, top_k=50, top_p=0.95, temperature=0.9)
-    response = tokenizer.decode(outputs[0], skip_special_tokens=True)
-    return response
+# Function to generate text
+def generate_text(prompt, temperature=0.9, max_length=100):
+    input_ids = tokenizer(prompt, return_tensors="pt").input_ids
+    gen_tokens = model.generate(
+        input_ids,
+        do_sample=True,
+        temperature=temperature,
+        max_length=max_length,
+    )
+    gen_text = tokenizer.batch_decode(gen_tokens, skip_special_tokens=True)[0]
+    return gen_text
 
-# Generate and display the response
-if st.button("Enter"):
-    prompt.strip():
-    response = generate_response(prompt)
-    st.text_area("Response:", value=response, height=200)
-    
-
-# Title of the app
-st.title("My Super Awesome GPT-2 Deployment!")
+# Generate and display the response when the button is clicked
+if st.button("Generate"):
+    if prompt.strip():
+        generated_text = generate_text(prompt)
+        st.text_area("Generated Response:", value=generated_text, height=200)
+    else:
+        st.warning("Please enter a prompt!")
