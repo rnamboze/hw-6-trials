@@ -43,5 +43,8 @@ predictable_response = model.generate(
 predictable_text = tokenizer.batch_decode(predictable_response)[0]
 
 # Display the result when user hits 'Enter'
+st.subheader("Creative Response:")
 st.write(creative_text)
+
+st.subheader("Predictable Response:")
 st.write(predictable_text)
