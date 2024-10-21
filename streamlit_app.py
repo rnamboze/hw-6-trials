@@ -14,6 +14,9 @@ model = AutoModelForCausalLM.from_pretrained("gpt2")
 # Title of the app
 st.title("My Super Awesome GPT-2 Deployment!")
 
+# Instructions
+st.text("Enter what is on your mind followed by an auxilliary verb such as is, was, has, etc. and see what happens!")
+
 # Field for the user's prompt
 prompt = st.text_input("What is on your mind?", "The weather is")
 
