@@ -21,16 +21,18 @@ st.caption("The example _Coffee is_ has been provided below")
 # Field for the user's prompt
 prompt = st.text_input("What is on your mind?", "Coffee is")
 
+# Field for the user to specify the number of tokens
+num_tokens = st.number_input("Number of Tokens:", min_value=10, max_value=200, value=100)
+
 input_ids = tokenizer(prompt, return_tensors="pt").input_ids
 
 gen_tokens = model.generate(
         input_ids,
         do_sample=True,
         temperature=0.9,
-        max_length=100,
+        max_length=num_tokens,
 )    
 gen_text = tokenizer.batch_decode(gen_tokens)[0]
  
-
-# Generate and display the response when the button is clicked
+# Display the result when user hits 'Enter'
 st.write(gen_text)
