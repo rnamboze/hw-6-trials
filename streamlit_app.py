@@ -21,22 +21,21 @@ st.caption("The example _Coffee is_ has been provided below")
 # Field for the user's prompt
 prompt = st.text_input("What is on your mind?", "Coffee is")
 
-# Function to generate text
-def generate_text(prompt, temperature=0.9, max_length=100):
-    input_ids = tokenizer(prompt, return_tensors="pt").input_ids
-    gen_tokens = model.generate(
+input_ids = tokenizer(prompt, return_tensors="pt").input_ids
+
+gen_tokens = model.generate(
         input_ids,
         do_sample=True,
-        temperature=temperature,
-        max_length=max_length,
-    )
-    gen_text = tokenizer.batch_decode(gen_tokens, skip_special_tokens=True)[0]
-    return gen_text
+        temperature=0.9,
+        max_length=100,
+    
+gen_text = tokenizer.batch_decode(gen_tokens)[0]
+ 
 
 # Generate and display the response when the button is clicked
 if st.button("Generate"):
     if prompt.strip():
-        generated_text = generate_text(prompt)
+        generated_text = gen_text(prompt)
         st.text_area("Generated Response:", value=generated_text, height=200)
     else:
         st.warning("Please enter a prompt!")
