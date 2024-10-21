@@ -28,7 +28,7 @@ gen_tokens = model.generate(
         do_sample=True,
         temperature=0.9,
         max_length=100,
-    
+)    
 gen_text = tokenizer.batch_decode(gen_tokens)[0]
  
 
