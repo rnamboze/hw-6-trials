@@ -4,6 +4,10 @@ import streamlit as st
 model = AutoModelForCausalLM.from_pretrained("gpt2")
 tokenizer = AutoTokenizer.from_pretrained("gpt2")
 
+prompt = "GPT2 is a model developed by OpenAI."
+
+input_ids = tokenizer(prompt, return_tensors="pt").input_ids
+
 gen_tokens = model.generate(
     input_ids,
     do_sample=True,
@@ -19,7 +23,7 @@ def main():
     user_prompt = st.text_input("Enter your prompt:")
 
     # Generate a response based on the user's prompt
-    if st.button("Generate"):
+    if st.button("Enter"):
         response = generate_response(user_prompt)
         st.text_area("Response:", value=response, height=200)
 
