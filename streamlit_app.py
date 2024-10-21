@@ -8,31 +8,32 @@ import os
 my_secret_key = st.secrets['MyOpenAIKey']
 os.environ["OPENAI_API_KEY"] = my_secret_key
 
-def main():
-    st.title("GPT-2 Text Generator")
+# Title of the app
+st.title("My Super Awesome GPT-2 Deployment!")
 
-    # Create a text input field for the user's prompt
-    user_prompt = st.text_input("Enter your prompt:")
+# Input field for the user's prompt
+prompt = st.text_input("What is your prompt today?", "Damascus is")
 
-    # Generate a response based on the user's prompt
-    if st.button("Generate"):
-        response = generate_response(user_prompt)
-        st.text_area("Response:", value=response, height=200)
+# Load GPT-2 model and tokenizer
+def load_model():
+    tokenizer = AutoTokenizer.from_pretrained("gpt2")
+    model = AutoModelForCausalLM.from_pretrained("gpt2")
+    return tokenizer, model
 
+tokenizer, model = load_model()
+
+# Function to generate a response from GPT-2
 def generate_response(prompt):
-    try:
-        response = openai.Completion.create(
-            engine="gpt2",  # Adjust the engine as needed
-            prompt=prompt,
-            max_tokens=1024,
-            temperature=0.7,  # Adjust temperature for creativity vs. coherence
-            n=1,
-            stop=None
-        )
-        return response.choices[0].text.strip()
-    except Exception as e:
-        st.error(f"An error occurred: {e}")
-        return ""
+    inputs = tokenizer(prompt, return_tensors="pt")
+    outputs = model.generate(inputs['input_ids'], max_length=100, do_sample=True, top_k=50, top_p=0.95, temperature=1.2)
+    response = tokenizer.decode(outputs[0], skip_special_tokens=True)
+    return response
 
-if __name__ == "__main__":
-    main()
+# Generate and display the response
+if st.button("Generate"):
+    if prompt.strip():
+        response = generate_response(prompt)
+        st.text_area("Response:", value=response, height=200)
+    else:
+        st.warning("Please enter a prompt!")
+
