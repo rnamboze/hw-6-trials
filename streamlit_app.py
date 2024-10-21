@@ -29,7 +29,7 @@ input_ids = tokenizer(prompt, return_tensors="pt").input_ids
 creative_response = model.generate(
         input_ids,
         do_sample=True,
-        max_length=num_tokens
+        max_length=num_tokens,
         top_k=50,
         top_p=0.95,
         temperature=1.0,
