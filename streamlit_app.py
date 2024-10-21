@@ -8,19 +8,14 @@ import os
 my_secret_key = st.secrets['MyOpenAIKey']
 os.environ["OPENAI_API_KEY"] = my_secret_key
 
+tokenizer = AutoTokenizer.from_pretrained("gpt2")
+model = AutoModelForCausalLM.from_pretrained("gpt2")
+
 # Title of the app
 st.title("My Super Awesome GPT-2 Deployment!")
 
-# Input field for the user's prompt
+# Field for the user's prompt
 prompt = st.text_input("What would you like to learn about today?")
-
-# Load GPT-2 model and tokenizer
-def load_model():
-    tokenizer = AutoTokenizer.from_pretrained("gpt2")
-    model = AutoModelForCausalLM.from_pretrained("gpt2")
-    return tokenizer, model
-
-tokenizer, model = load_model()
 
 # Function to generate a response from GPT-2
 def generate_response(prompt):
