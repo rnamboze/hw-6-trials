@@ -23,13 +23,12 @@ def main():
 def generate_response(prompt):
     try:
         inputs = tokenizer(prompt, return_tensors="pt")
-        outputs = model.generate(
-            **inputs, 
-            max_length=max_length, 
-            temperature=temperature, 
-            top_k=top_k, 
-            top_p=top_p, 
-            do_sample=True
-        )
+        outputs = model.generate(**inputs, max_length=1024, num_beams=4)
         response = tokenizer.decode(outputs[0], skip_special_tokens=True)
         return response.strip()
+    except Exception as e:
+        st.error(f"An error occurred: {e}")
+        return ""
+
+if __name__ == "__main__":
+    main()
