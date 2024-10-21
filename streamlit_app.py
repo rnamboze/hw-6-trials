@@ -16,7 +16,7 @@ st.title("My Super Awesome GPT-2 Deployment!")
 
 # Instructions
 st.caption("Enter _what is on your mind_ followed by an auxilliary verb such as _is, was, has,_ etc. and see what happens! :sunglasses:")
-st.caption("An example _Swimming is_ has been provided below)
+st.caption("The example _Swimming is_ has been provided below")
 
 
 # Field for the user's prompt
