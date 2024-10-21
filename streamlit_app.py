@@ -1,5 +1,6 @@
 import streamlit as st
 from transformers import AutoTokenizer, AutoModelForCausalLM
+import torch
 
 tokenizer = AutoTokenizer.from_pretrained("gpt2")
 model = AutoModelForCausalLM.from_pretrained("gpt2")
