@@ -20,7 +20,7 @@ st.caption("An example "Swimming is" has been provided below)
 
 
 # Field for the user's prompt
-prompt = st.text_input("What is on your mind?", "The weather is")
+prompt = st.text_input("What is on your mind?", "Swimming is")
 
 # Function to generate text
 def generate_text(prompt, temperature=0.9, max_length=100):
