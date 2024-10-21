@@ -15,7 +15,7 @@ model = AutoModelForCausalLM.from_pretrained("gpt2")
 st.title("My Super Awesome GPT-2 Deployment!")
 
 # Field for the user's prompt
-prompt = st.text_input("What would you like to learn about today?")
+prompt = st.text_input("What is on your mind?", "The weather is")
 
 # Function to generate text
 def generate_text(prompt, temperature=0.9, max_length=100):
