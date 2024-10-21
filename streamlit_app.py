@@ -4,6 +4,7 @@ import torch
 
 def load_model():
     tokenizer = AutoTokenizer.from_pretrained("gpt2")
+    tokenizer.pad_token_id = tokenizer.eos_token_id
     model = AutoModelForCausalLM.from_pretrained("gpt2")
     return tokenizer, model
 
