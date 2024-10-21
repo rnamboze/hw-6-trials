@@ -29,16 +29,20 @@ input_ids = tokenizer(prompt, return_tensors="pt").input_ids
 creative_response = model.generate(
         input_ids,
         do_sample=True,
-        temperature=0.9,
-        max_length=num_tokens,
+        max_length=num_tokens
+        top_k=50,
+        top_p=0.95,
+        temperature=1.0,
 )    
 creative_text = tokenizer.batch_decode(creative_response)[0]
 
 predictable_response = model.generate(
         input_ids,
         do_sample=True,
-        temperature=0.9,
         max_length=num_tokens,
+        top_k=50,
+        top_p=0.95,
+        temperature=0.2
 )    
 predictable_text = tokenizer.batch_decode(predictable_response)[0]
 
