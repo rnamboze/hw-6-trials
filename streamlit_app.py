@@ -31,7 +31,7 @@ creative_response = model.generate(
         do_sample=True,
         max_length=num_tokens,
         top_k=50,
-        top_p=0.95,
+        top_p=0.9,
         temperature=1.0,
 )    
 creative_text = tokenizer.batch_decode(creative_response)[0]
@@ -41,12 +41,12 @@ predictable_response = model.generate(
         do_sample=True,
         max_length=num_tokens,
         top_k=50,
-        top_p=0.95,
+        top_p=0.9,
         temperature=0.2
 )    
 predictable_text = tokenizer.batch_decode(predictable_response)[0]
 
-# Display the result when user hits 'Enter'
+# Display the result
 st.subheader("Creative Response:")
 st.write(creative_text)
 
