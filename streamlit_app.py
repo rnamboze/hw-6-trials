@@ -12,7 +12,7 @@ os.environ["OPENAI_API_KEY"] = my_secret_key
 st.title("My Super Awesome GPT-2 Deployment!")
 
 # Input field for the user's prompt
-prompt = st.text_input("What is your prompt today?", "Damascus is")
+prompt = st.text_input("What would you like to learn about today?")
 
 # Load GPT-2 model and tokenizer
 def load_model():
