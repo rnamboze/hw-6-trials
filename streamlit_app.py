@@ -20,7 +20,7 @@ def main():
             response = generate_response(user_prompt)
             st.text_area("Response:", value=response, height=200)
 
-def generate_response(prompt, max_length, temperature, top_k, top_p):
+def generate_response(prompt):
     try:
         inputs = tokenizer(prompt, return_tensors="pt")
         outputs = model.generate(
@@ -33,9 +33,6 @@ def generate_response(prompt, max_length, temperature, top_k, top_p):
         )
         response = tokenizer.decode(outputs[0], skip_special_tokens=True)
         return response.strip()
-    except Exception as e:
-        st.error(f"An error occurred: {e}")
-        return ""
 
 if __name__ == "__main__":
     main()
