@@ -33,6 +33,4 @@ gen_text = tokenizer.batch_decode(gen_tokens)[0]
  
 
 # Generate and display the response when the button is clicked
-st.write(
-    response.choices[0].message.content
-)
+st.write(gen_text)
