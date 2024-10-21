@@ -26,7 +26,7 @@ num_tokens = st.number_input("Number of Tokens:", min_value=10, max_value=300, v
 
 input_ids = tokenizer(prompt, return_tensors="pt").input_ids
 
-# Information on creativity and predictability obtained from https://developer.nvidia.com/blog/how-to-get-better-outputs-from-your-large-language-model/
+# Information on creativity and predictability obtained from https://developer.nvidia.com/blog/how-to-get-better-outputs-from-your-large-language-model/ - I have chosen to use temperature and Top-k and Top-p parameters
 
 creative_response = model.generate(
         input_ids,
@@ -55,4 +55,6 @@ st.write(creative_text)
 st.subheader("Predictable Response:")
 st.write(predictable_text)
 
-# the testing of this feature is through observation of the results displayed. At a lower temperature, the model is more conservative and is limited to choosing tokens with higher probabilities. As you increase the temperature, that limit gets lenient, allowing the model to choose lesser probable words, resulting in more unpredictable and creative text.
+# The testing of this feature is through observation of the results displayed. 
+# At a lower temperature, the model is more conservative and is limited to choosing tokens with higher probabilities. 
+# At higher temperature, that limit gets lenient, allowing the model to choose lesser probable words, resulting in more unpredictable and creative text.
