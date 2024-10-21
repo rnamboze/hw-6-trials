@@ -22,7 +22,7 @@ st.caption("The example _Coffee is_ has been provided below")
 prompt = st.text_input("What is on your mind?", "Coffee is")
 
 # Field for the user to specify the number of tokens
-num_tokens = st.number_input("Number of Tokens:", min_value=10, max_value=300, value=50)
+num_tokens = st.number_input("Number of Tokens:", min_value=10, max_value=300, value=20)
 
 input_ids = tokenizer(prompt, return_tensors="pt").input_ids
 
