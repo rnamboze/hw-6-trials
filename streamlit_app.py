@@ -1,4 +1,4 @@
-import streamlit as st
+rimport streamlit as st
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import torch
 import openai
@@ -33,9 +33,6 @@ gen_text = tokenizer.batch_decode(gen_tokens)[0]
  
 
 # Generate and display the response when the button is clicked
-if st.button("Generate"):
-    if prompt.strip():
-        generated_text = gen_text(prompt)
-        st.text_area("Generated Response:", value=generated_text, height=200)
-    else:
-        st.warning("Please enter a prompt!")
+st.write(
+    response.choices[0].message.content
+)
