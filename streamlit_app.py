@@ -22,7 +22,7 @@ def main():
 def generate_response(prompt):
     try:
         response = openai.Completion.create(
-            engine="text-davinci-003",  # Adjust the engine as needed
+            engine="gpt2",  # Adjust the engine as needed
             prompt=prompt,
             max_tokens=1024,
             temperature=0.7,  # Adjust temperature for creativity vs. coherence
